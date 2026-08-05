@@ -25,6 +25,7 @@ spring:
     hibernate:
       ddl-auto: create-drop
     show-sql: true
+    defer-datasource-initialization: true
 
   # Tự động chạy data.sql khi khởi động
   sql:
