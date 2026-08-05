@@ -1,0 +1,51 @@
+# ============================================
+# BookVerse - Cấu hình chung
+# ============================================
+spring:
+  application:
+    name: BookVerse
+
+  # Cấu hình upload file
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: ${MAX_FILE_SIZE:10MB}
+      max-request-size: ${MAX_REQUEST_SIZE:50MB}
+
+  # JPA chung
+  jpa:
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+
+# Server
+server:
+  port: ${SERVER_PORT:8080}
+
+# Swagger / OpenAPI
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+
+# ============================================
+# Cấu hình ứng dụng tùy chỉnh
+# ============================================
+app:
+  upload:
+    dir: ${UPLOAD_DIR:./uploads}
+  image:
+    thumbnail-size: ${THUMBNAIL_SIZE:200}
+    medium-size: ${MEDIUM_SIZE:500}
+    large-size: ${LARGE_SIZE:1200}
+    allowed-types:
+      - image/jpeg
+      - image/png
+      - image/webp
+  cache:
+    book-ttl: ${CACHE_BOOK_TTL:300}
+    search-ttl: ${CACHE_SEARCH_TTL:120}
+    cover-ttl: ${CACHE_COVER_TTL:1800}

@@ -1,0 +1,32 @@
+# ============================================
+# BookVerse - Cấu hình Production (PostgreSQL)
+# ============================================
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+  # PostgreSQL Database
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:bookverse}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+
+  # JPA - chỉ cập nhật schema, không xóa dữ liệu
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+
+  # Không chạy data.sql trong production
+  sql:
+    init:
+      mode: never
+
+# Logging
+logging:
+  level:
+    com.bookverse: INFO
+    org.springframework.web: WARN
