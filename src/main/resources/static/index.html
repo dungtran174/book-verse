@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BookVerse - Hệ thống quản lý sách điện tử">
+    <title>BookVerse - Quản Lý Sách</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo" style="cursor: pointer;" onclick="loadBooks()">📚 BookVerse</h1>
+            <nav class="nav">
+                <button id="btn-home" class="nav-btn active" onclick="loadBooks()">Trang Chủ</button>
+                <button id="btn-add" class="nav-btn" onclick="showAddForm()">+ Thêm Sách</button>
+                <a href="/swagger-ui.html" target="_blank" class="nav-btn nav-link">API Docs</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Search Bar -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Tìm kiếm theo tên sách hoặc tác giả..."
+                       onkeyup="handleSearch(event)">
+                <select id="category-filter" onchange="filterBooks()">
+                    <option value="">Tất cả thể loại</option>
+                    <option value="Công nghệ">Công nghệ</option>
+                    <option value="Tiểu thuyết">Tiểu thuyết</option>
+                    <option value="Khoa học">Khoa học</option>
+                    <option value="Phát triển bản thân">Phát triển bản thân</option>
+                </select>
+                <button class="btn btn-search" onclick="searchBooks()">🔍 Tìm</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Book Grid -->
+            <div id="book-grid" class="book-grid"></div>
+
+            <!-- Add/Edit Form (hidden by default) -->
+            <div id="book-form" class="book-form hidden">
+                <h2 id="form-title">Thêm Sách Mới</h2>
+                <form id="bookForm" onsubmit="submitForm(event)">
+                    <input type="hidden" id="book-id">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="title">Tiêu đề *</label>
+                            <input type="text" id="title" required maxlength="255">
+                        </div>
+                        <div class="form-group">
+                            <label for="author">Tác giả *</label>
+                            <input type="text" id="author" required maxlength="255">
+                        </div>
+                        <div class="form-group">
+                            <label for="isbn">ISBN</label>
+                            <input type="text" id="isbn" maxlength="13">
+                        </div>
+                        <div class="form-group">
+                            <label for="year">Năm xuất bản</label>
+                            <input type="number" id="year" min="1000" max="2100">
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Thể loại</label>
+                            <input type="text" id="category" maxlength="100">
+                        </div>
+                        <div class="form-group">
+                            <label for="rating">Rating (0-5)</label>
+                            <input type="number" id="rating" min="0" max="5" step="0.1">
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="description">Mô tả</label>
+                            <textarea id="description" rows="3" maxlength="5000"></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="cover">Ảnh bìa (JPG, PNG, WebP)</label>
+                            <input type="file" id="cover" accept="image/jpeg,image/png,image/webp">
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">💾 Lưu</button>
+                        <button type="button" class="btn btn-secondary" onclick="hideForm()">Hủy</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Pagination -->
+            <div id="pagination" class="pagination"></div>
+        </div>
+    </main>
+
+    <!-- Book Detail Modal -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden"></div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 BookVerse. Hệ thống quản lý sách điện tử.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

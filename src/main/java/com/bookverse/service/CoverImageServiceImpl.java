@@ -127,8 +127,14 @@ public class CoverImageServiceImpl implements CoverImageService {
         else { nh = target; nw = (int)((double)w / h * target); }
 
         Path output = dir.resolve(bookId + "-" + sizeName + ".webp");
-        // Resize và lưu - dùng PNG format (rename .webp), WebP writer tùy thuộc runtime
-        Thumbnails.of(original).size(nw, nh).outputFormat("png").toFile(output.toFile());
+        
+        // Sử dụng OutputStream để ép Thumbnailator ghi đè đuôi file, không tự sinh thêm đuôi .png
+        try (java.io.OutputStream os = Files.newOutputStream(output)) {
+            Thumbnails.of(original)
+                    .size(nw, nh)
+                    .outputFormat("png")
+                    .toOutputStream(os);
+        }
         log.debug("Tạo ảnh {}: {}x{}", sizeName, nw, nh);
     }
 }
