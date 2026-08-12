@@ -1,8 +1,8 @@
-# 📚 BookVerse - Hệ Thống Quản Lý Sách Điện Tử
+#  BookVerse - Hệ Thống Quản Lý Sách Điện Tử
 
 Hệ thống Web API + Web Application quản lý sách điện tử được xây dựng bằng **Spring Boot 3**, hỗ trợ CRUD sách, upload/quản lý ảnh bìa, tìm kiếm full-text, và import hàng loạt.
 
-## 📑 Mục Lục
+##  Mục Lục
 
 - [Công Nghệ](#-công-nghệ)
 - [Cấu Trúc Thư Mục](#-cấu-trúc-thư-mục)
@@ -13,7 +13,7 @@ Hệ thống Web API + Web Application quản lý sách điện tử được x�
 
 ---
 
-## 🛠 Công Nghệ
+##  Công Nghệ
 
 | Thành phần | Công nghệ |
 |---|---|
@@ -31,69 +31,69 @@ Hệ thống Web API + Web Application quản lý sách điện tử được x�
 
 ---
 
-## 📁 Cấu Trúc Thư Mục
+##  Cấu Trúc Thư Mục
 
 ```
 book-verse/
-├── .env                          # Biến môi trường
-├── .gitignore
-├── pom.xml                       # Maven dependencies
-├── Dockerfile                    # Multi-stage Docker build
-├── docker-compose.yml            # Docker Compose (app + PostgreSQL)
-├── README.md
-├── docs/
-│   └── architecture.md           # Kiến trúc hệ thống chi tiết
-├── frontend/
-│   ├── index.html                # Giao diện web
-│   ├── style.css                 # Styles
-│   └── app.js                    # JavaScript logic
-└── src/
-    ├── main/
-    │   ├── java/com/bookverse/
-    │   │   ├── BookVerseApplication.java    # Main class
-    │   │   ├── config/
-    │   │   │   ├── CacheConfig.java         # Caffeine cache
-    │   │   │   ├── OpenApiConfig.java       # Swagger
-    │   │   │   └── WebConfig.java           # CORS
-    │   │   ├── controller/
-    │   │   │   └── BookController.java      # REST API endpoints
-    │   │   ├── dto/
-    │   │   │   ├── BookRequestDto.java      # Input DTO + validation
-    │   │   │   ├── BookResponseDto.java     # Output DTO
-    │   │   │   └── PageResponseDto.java     # Pagination wrapper
-    │   │   ├── entity/
-    │   │   │   └── Book.java                # JPA entity
-    │   │   ├── exception/
-    │   │   │   ├── ErrorResponse.java       # Error DTO
-    │   │   │   ├── FileProcessingException.java
-    │   │   │   ├── GlobalExceptionHandler.java
-    │   │   │   └── ResourceNotFoundException.java
-    │   │   ├── mapper/
-    │   │   │   └── BookMapper.java          # MapStruct mapper
-    │   │   ├── repository/
-    │   │   │   └── BookRepository.java      # JPA Repository
-    │   │   └── service/
-    │   │       ├── BookService.java         # Interface
-    │   │       ├── BookServiceImpl.java     # CRUD + Search logic
-    │   │       ├── BulkImportService.java   # Interface
-    │   │       ├── BulkImportServiceImpl.java # Excel/CSV import
-    │   │       ├── CoverImageService.java   # Interface
-    │   │       └── CoverImageServiceImpl.java # Image resize/save
-    │   └── resources/
-    │       ├── application.yml              # Config chung
-    │       ├── application-dev.yml          # H2 database
-    │       ├── application-prod.yml         # PostgreSQL
-    │       └── data.sql                     # Dữ liệu mẫu
-    └── test/java/com/bookverse/
-        ├── BookVerseApplicationTests.java
-        └── service/
-            ├── BookServiceTest.java         # Unit test CRUD
-            └── CoverImageServiceTest.java   # Unit test image
+ .env                          # Biến môi trường
+ .gitignore
+ pom.xml                       # Maven dependencies
+ Dockerfile                    # Multi-stage Docker build
+ docker-compose.yml            # Docker Compose (app + PostgreSQL)
+ README.md
+ docs/
+    architecture.md           # Kiến trúc hệ thống chi tiết
+ frontend/
+    index.html                # Giao diện web
+    style.css                 # Styles
+    app.js                    # JavaScript logic
+ src/
+     main/
+        java/com/bookverse/
+           BookVerseApplication.java    # Main class
+           config/
+              CacheConfig.java         # Caffeine cache
+              OpenApiConfig.java       # Swagger
+              WebConfig.java           # CORS
+           controller/
+              BookController.java      # REST API endpoints
+           dto/
+              BookRequestDto.java      # Input DTO + validation
+              BookResponseDto.java     # Output DTO
+              PageResponseDto.java     # Pagination wrapper
+           entity/
+              Book.java                # JPA entity
+           exception/
+              ErrorResponse.java       # Error DTO
+              FileProcessingException.java
+              GlobalExceptionHandler.java
+              ResourceNotFoundException.java
+           mapper/
+              BookMapper.java          # MapStruct mapper
+           repository/
+              BookRepository.java      # JPA Repository
+           service/
+               BookService.java         # Interface
+               BookServiceImpl.java     # CRUD + Search logic
+               BulkImportService.java   # Interface
+               BulkImportServiceImpl.java # Excel/CSV import
+               CoverImageService.java   # Interface
+               CoverImageServiceImpl.java # Image resize/save
+        resources/
+            application.yml              # Config chung
+            application-dev.yml          # H2 database
+            application-prod.yml         # PostgreSQL
+            data.sql                     # Dữ liệu mẫu
+     test/java/com/bookverse/
+         BookVerseApplicationTests.java
+         service/
+             BookServiceTest.java         # Unit test CRUD
+             CoverImageServiceTest.java   # Unit test image
 ```
 
 ---
 
-## 🚀 Hướng Dẫn Chạy Trên IntelliJ IDEA
+##  Hướng Dẫn Chạy Trên IntelliJ IDEA
 
 ### Yêu cầu hệ thống
 - **Java JDK 17** trở lên
@@ -123,12 +123,12 @@ book-verse/
 2. Tìm **Lombok** → Click **Install**
 3. Restart IntelliJ
 4. Vào **File → Settings → Build, Execution, Deployment → Compiler → Annotation Processors**
-5. Tick ✅ **Enable annotation processing**
+5. Tick  **Enable annotation processing**
 
 ### Bước 4: Cấu hình Run Configuration
 
 1. Mở file `BookVerseApplication.java`
-2. Click biểu tượng ▶️ (Run) bên cạnh `public static void main`
+2. Click biểu tượng ️ (Run) bên cạnh `public static void main`
 3. Chọn **Modify Run Configuration...**
 4. Trong tab **Environment variables**, thêm:
    ```
@@ -139,7 +139,7 @@ book-verse/
 
 ### Bước 5: Chạy Ứng Dụng
 
-1. Click ▶️ **Run** hoặc nhấn `Shift + F10`
+1. Click ️ **Run** hoặc nhấn `Shift + F10`
 2. Đợi console hiển thị:
    ```
    Started BookVerseApplication in X.XX seconds
@@ -162,7 +162,7 @@ book-verse/
 
 ---
 
-## 📡 API Endpoints
+##  API Endpoints
 
 | Method | Endpoint | Mô tả |
 |---|---|---|
@@ -191,7 +191,7 @@ curl "http://localhost:8080/api/books/search?q=Clean&category=Công+nghệ&page=
 
 ---
 
-## 🐳 Chạy Bằng Docker
+##  Chạy Bằng Docker
 
 ```bash
 # Build và chạy tất cả services
@@ -221,7 +221,7 @@ mvn test
 
 ---
 
-## 📄 Tài Liệu Bổ Sung
+##  Tài Liệu Bổ Sung
 
 - [Kiến trúc hệ thống chi tiết](docs/architecture.md) - Phân tích bài toán, luồng hoạt động, API specs
 - [Swagger UI](http://localhost:8080/swagger-ui.html) - Interactive API documentation

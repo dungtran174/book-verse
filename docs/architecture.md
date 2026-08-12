@@ -1,4 +1,4 @@
-# 📐 BookVerse - Kiến Trúc Hệ Thống
+#  BookVerse - Kiến Trúc Hệ Thống
 
 ## 1. Tổng Quan
 
@@ -24,42 +24,42 @@
 ## 2. Kiến Trúc Layered Architecture
 
 ```
-┌─────────────────────────────────────────────────┐
-│                   CLIENT                        │
-│         (Frontend / Postman / Swagger)           │
-└───────────────────┬─────────────────────────────┘
-                    │ HTTP Request
+
+                   CLIENT                        
+         (Frontend / Postman / Swagger)           
+
+                     HTTP Request
                     ▼
-┌─────────────────────────────────────────────────┐
-│              CONTROLLER LAYER                   │
-│         BookController.java                     │
-│  - Nhận request, validate, trả response         │
-│  - Swagger annotations                          │
-└───────────────────┬─────────────────────────────┘
-                    │ DTO
+
+              CONTROLLER LAYER                   
+         BookController.java                     
+  - Nhận request, validate, trả response         
+  - Swagger annotations                          
+
+                     DTO
                     ▼
-┌─────────────────────────────────────────────────┐
-│               SERVICE LAYER                     │
-│  BookServiceImpl / CoverImageServiceImpl        │
-│  BulkImportServiceImpl                          │
-│  - Xử lý business logic                        │
-│  - Caching, transaction management              │
-│  - Gọi Mapper để chuyển đổi DTO ↔ Entity       │
-└───────────────────┬─────────────────────────────┘
-                    │ Entity
+
+               SERVICE LAYER                     
+  BookServiceImpl / CoverImageServiceImpl        
+  BulkImportServiceImpl                          
+  - Xử lý business logic                        
+  - Caching, transaction management              
+  - Gọi Mapper để chuyển đổi DTO ↔ Entity       
+
+                     Entity
                     ▼
-┌─────────────────────────────────────────────────┐
-│             REPOSITORY LAYER                    │
-│         BookRepository.java                     │
-│  - Truy vấn database qua Spring Data JPA       │
-│  - Custom query cho full-text search            │
-└───────────────────┬─────────────────────────────┘
-                    │ SQL
+
+             REPOSITORY LAYER                    
+         BookRepository.java                     
+  - Truy vấn database qua Spring Data JPA       
+  - Custom query cho full-text search            
+
+                     SQL
                     ▼
-┌─────────────────────────────────────────────────┐
-│               DATABASE                          │
-│     PostgreSQL (prod) / H2 (dev)                │
-└─────────────────────────────────────────────────┘
+
+               DATABASE                          
+     PostgreSQL (prod) / H2 (dev)                
+
 ```
 
 ---
@@ -167,8 +167,8 @@
 
 | Part | Kiểu | Bắt buộc | Mô tả |
 |---|---|---|---|
-| book | JSON | ✅ | BookRequestDto |
-| cover | File | ❌ | Ảnh bìa (JPG/PNG/WebP) |
+| book | JSON |  | BookRequestDto |
+| cover | File |  | Ảnh bìa (JPG/PNG/WebP) |
 
 **Luồng xử lý:**
 1. Controller nhận multipart → validate BookRequestDto
@@ -234,20 +234,20 @@ Tương tự POST, nhưng:
 
 ```
 Upload (JPG/PNG/WebP)
-        │
+        
         ▼
   Validate (type, size)
-        │
+        
         ▼
   Đọc BufferedImage
-        │
-        ├──► Resize 200px  → {id}-thumbnail.webp
-        ├──► Resize 500px  → {id}-medium.webp
-        └──► Resize 1200px → {id}-large.webp
-                │
+        
+        ► Resize 200px  → {id}-thumbnail.webp
+        ► Resize 500px  → {id}-medium.webp
+        ► Resize 1200px → {id}-large.webp
+                
                 ▼
     Lưu tại: uploads/covers/yyyy/MM/
-                │
+                
                 ▼
     coverPath = "covers/yyyy/MM/{id}"
 ```
@@ -298,15 +298,15 @@ Response lỗi chuẩn:
 
 ```
 uploads/
-└── covers/
-    └── 2026/
-        └── 08/
-            ├── 1-thumbnail.webp
-            ├── 1-medium.webp
-            ├── 1-large.webp
-            ├── 2-thumbnail.webp
-            ├── 2-medium.webp
-            └── 2-large.webp
+ covers/
+     2026/
+         08/
+             1-thumbnail.webp
+             1-medium.webp
+             1-large.webp
+             2-thumbnail.webp
+             2-medium.webp
+             2-large.webp
 ```
 
 ---
@@ -318,12 +318,12 @@ docker-compose up -d
 ```
 
 ```
-┌─────────────────┐     ┌─────────────────┐
-│  bookverse-app  │────▶│  bookverse-db   │
-│  (Spring Boot)  │     │  (PostgreSQL)   │
-│  Port: 8080     │     │  Port: 5432     │
-└─────────────────┘     └─────────────────┘
-        │                       │
+     
+  bookverse-app    bookverse-db   
+  (Spring Boot)         (PostgreSQL)   
+  Port: 8080            Port: 5432     
+     
+                               
    upload_data             postgres_data
    (Volume)                (Volume)
 ```
