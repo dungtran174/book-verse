@@ -128,7 +128,7 @@ book-verse/
 ### Bước 4: Cấu hình Run Configuration
 
 1. Mở file `BookVerseApplication.java`
-2. Click biểu tượng ️ (Run) bên cạnh `public static void main`
+2. Click biểu tượng  (Run) bên cạnh `public static void main`
 3. Chọn **Modify Run Configuration...**
 4. Trong tab **Environment variables**, thêm:
    ```
@@ -139,7 +139,7 @@ book-verse/
 
 ### Bước 5: Chạy Ứng Dụng
 
-1. Click ️ **Run** hoặc nhấn `Shift + F10`
+1. Click  **Run** hoặc nhấn `Shift + F10`
 2. Đợi console hiển thị:
    ```
    Started BookVerseApplication in X.XX seconds
@@ -208,7 +208,7 @@ docker-compose down
 
 ---
 
-## 🧪 Chạy Unit Test
+##  Chạy Unit Test
 
 ### Trên IntelliJ
 1. Click chuột phải vào thư mục `src/test`
