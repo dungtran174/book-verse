@@ -1,4 +1,4 @@
-# 📐 BookVerse - Kiến Trúc Hệ Thống
+# BookVerse - Kiến Trúc Hệ Thống
 
 ## 1. Tổng Quan
 
