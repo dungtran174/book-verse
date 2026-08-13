@@ -162,7 +162,7 @@ book-verse/
 
 ---
 
-## 📡 API Endpoints
+## API Endpoints
 
 | Method | Endpoint | Mô tả |
 |---|---|---|
