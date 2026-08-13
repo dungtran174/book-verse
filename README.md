@@ -1,8 +1,8 @@
-# 📚 BookVerse - Hệ Thống Quản Lý Sách Điện Tử
+# BookVerse - Hệ Thống Quản Lý Sách Điện Tử
 
 Hệ thống Web API + Web Application quản lý sách điện tử được xây dựng bằng **Spring Boot 3**, hỗ trợ CRUD sách, upload/quản lý ảnh bìa, tìm kiếm full-text, và import hàng loạt.
 
-## 📑 Mục Lục
+## Mục Lục
 
 - [Công Nghệ](#-công-nghệ)
 - [Cấu Trúc Thư Mục](#-cấu-trúc-thư-mục)
@@ -13,7 +13,7 @@ Hệ thống Web API + Web Application quản lý sách điện tử được x�
 
 ---
 
-## 🛠 Công Nghệ
+## Công Nghệ
 
 | Thành phần | Công nghệ |
 |---|---|
@@ -31,7 +31,7 @@ Hệ thống Web API + Web Application quản lý sách điện tử được x�
 
 ---
 
-## 📁 Cấu Trúc Thư Mục
+## Cấu Trúc Thư Mục
 
 ```
 book-verse/
@@ -93,7 +93,7 @@ book-verse/
 
 ---
 
-## 🚀 Hướng Dẫn Chạy Trên IntelliJ IDEA
+## Hướng Dẫn Chạy Trên IntelliJ IDEA
 
 ### Yêu cầu hệ thống
 - **Java JDK 17** trở lên
@@ -123,12 +123,12 @@ book-verse/
 2. Tìm **Lombok** → Click **Install**
 3. Restart IntelliJ
 4. Vào **File → Settings → Build, Execution, Deployment → Compiler → Annotation Processors**
-5. Tick ✅ **Enable annotation processing**
+5. Tick **Enable annotation processing**
 
 ### Bước 4: Cấu hình Run Configuration
 
 1. Mở file `BookVerseApplication.java`
-2. Click biểu tượng ▶️ (Run) bên cạnh `public static void main`
+2. Click biểu tượng ▶(Run) bên cạnh `public static void main`
 3. Chọn **Modify Run Configuration...**
 4. Trong tab **Environment variables**, thêm:
    ```
@@ -139,7 +139,7 @@ book-verse/
 
 ### Bước 5: Chạy Ứng Dụng
 
-1. Click ▶️ **Run** hoặc nhấn `Shift + F10`
+1. Click ▶**Run** hoặc nhấn `Shift + F10`
 2. Đợi console hiển thị:
    ```
    Started BookVerseApplication in X.XX seconds
@@ -191,7 +191,7 @@ curl "http://localhost:8080/api/books/search?q=Clean&category=Công+nghệ&page=
 
 ---
 
-## 🐳 Chạy Bằng Docker
+## Chạy Bằng Docker
 
 ```bash
 # Build và chạy tất cả services
@@ -208,7 +208,7 @@ docker-compose down
 
 ---
 
-## 🧪 Chạy Unit Test
+## Chạy Unit Test
 
 ### Trên IntelliJ
 1. Click chuột phải vào thư mục `src/test`
@@ -221,7 +221,7 @@ mvn test
 
 ---
 
-## 📄 Tài Liệu Bổ Sung
+## Tài Liệu Bổ Sung
 
 - [Kiến trúc hệ thống chi tiết](docs/architecture.md) - Phân tích bài toán, luồng hoạt động, API specs
 - [Swagger UI](http://localhost:8080/swagger-ui.html) - Interactive API documentation
